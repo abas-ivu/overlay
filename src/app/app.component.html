@@ -1,0 +1,77 @@
+<div>
+  <button (click)="openOverlay($event)" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin" style="background-color: antiquewhite; width: 200px;">
+    {{isOpen ? "Close" : "Open"}}
+  </button>
+
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen"
+  >
+    <div #childDiv >
+      <select size="5" (click)="onItemSelected($event)"
+        [ngClass]="{'w-max': isChildWidthExceeded()}" [ngStyle]="{'width': !isChildWidthExceeded()? 'null': getDynamicWidthClass()}"
+        class="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <ng-container *ngFor="let i of items_long">
+          <option value="{{i}}">{{i}}</option>
+        </ng-container>
+      </select>
+    </div>
+  </ng-template>
+</div>
+<!-- <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br> -->
+
+
+<!-- [style.width.px]="getParentWidth()" [ngClass]="{'w-max': isChildWidthExceeded()}" -->
+<!-- [ngClass]="{'w-max': isChildWidthExceeded()}" -->
+
+
+<!--
+Without overlay
+<div class="overlay-parent">
+  <button type="button">
+    {{isOpen ? "Close" : "Open"}}
+  </button>
+   <div *ngIf="isOpen" class="w-full">
+    <h3 style="background-color: orange;">
+      Hellof
+      Hello
+    </h3>
+   </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+with overlay
+<div class="overlay-parent">
+  <button type="button" (click)="openOverlay($event)" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+    {{isOpen ? "Close" : "Open"}}
+  </button>
+  <ng-container>
+    <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen">
+    <div class="w-full">
+      <h3 style="background-color: orange;">
+        Hello
+        Hello
+      </h3>
+     </div>
+    </ng-template>
+  </ng-container>
+</div>
+
+ -->
