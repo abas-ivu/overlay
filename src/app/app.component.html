@@ -34,7 +34,7 @@
 <!-- [style.width.px]="getParentWidth()" [ngClass]="{'w-max': isChildWidthExceeded()}" -->
 <!-- [ngClass]="{'w-max': isChildWidthExceeded()}" -->
 
-Without overlay
+Without overlay but expected behaviour
 <div class="overlay-parent">
   <button type="button" (click)="openOverlay($event)">
     {{ isOpen ? 'Close' : 'Open' }}
@@ -51,7 +51,8 @@ Without overlay
 <br />
 <br />
 <br />
-with overlay
+
+with overlay but current behaviour
 <div class="overlay-parent">
   <button
     (click)="openOverlay($event)"
