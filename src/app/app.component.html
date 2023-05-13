@@ -39,8 +39,8 @@ Without overlay but expected behaviour
   <button type="button" (click)="openOverlay($event)">
     {{ isOpen ? 'Close' : 'Open' }}
   </button>
-  <div *ngIf="isOpen" class="w-full">
-    <h3 style="background-color: orange;">Hellof Hello</h3>
+  <div *ngIf="isOpen" class="w-full" style="background-color: orange;">
+    <h3>Hellof Hello</h3>
   </div>
 </div>
 
@@ -62,17 +62,16 @@ with overlay but current behaviour
   >
     {{ isOpen ? 'Close' : 'Open' }}
   </button>
-    <ng-template
-      cdkConnectedOverlay
-      [cdkConnectedOverlayOrigin]="trigger"
-      [cdkConnectedOverlayOpen]="isOpen"
-    >
-      <div class="w-full absolute z-50 mt-6 bg-orange-500">
-        <h3 >Hello Hello</h3>
-      </div>
-    </ng-template>
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen"
+  >
+    <div class="w-max absolute z-50" style="background-color: orange;">
+      <h3>Hello Hello</h3>
+    </div>
+  </ng-template>
 </div>
-<br>
-<br>
-<br>
-
+<br />
+<br />
+<br />
