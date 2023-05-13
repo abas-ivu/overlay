@@ -10,12 +10,12 @@ source, it can expand too.
 
 case-1
 
-| Button |
+| Button ..|
 
 | Text(sm) |
 
 case-2
 
-| Button |
+| Button ..|
 
 | Text(long) which is here |
