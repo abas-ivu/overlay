@@ -31,50 +31,45 @@
 <br>
 <br> -->
 
-
 <!-- [style.width.px]="getParentWidth()" [ngClass]="{'w-max': isChildWidthExceeded()}" -->
 <!-- [ngClass]="{'w-max': isChildWidthExceeded()}" -->
 
-
-
 Without overlay
 <div class="overlay-parent">
-  <button type="button">
-    {{isOpen ? "Close" : "Open"}}
+  <button type="button" (click)="openOverlay($event)">
+    {{ isOpen ? 'Close' : 'Open' }}
   </button>
-   <div *ngIf="isOpen" class="w-full">
-    <h3 style="background-color: orange;">
-      Hellof
-      Hello
-    </h3>
-   </div>
+  <div *ngIf="isOpen" class="w-full">
+    <h3 style="background-color: orange;">Hellof Hello</h3>
+  </div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 with overlay
 <div class="overlay-parent">
-  <button type="button" (click)="openOverlay($event)" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
-    {{isOpen ? "Close" : "Open"}}
+  <button
+    (click)="openOverlay($event)"
+    type="button"
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+  >
+    {{ isOpen ? 'Close' : 'Open' }}
   </button>
   <ng-container>
     <ng-template
-    cdkConnectedOverlay
-    [cdkConnectedOverlayOrigin]="trigger"
-    [cdkConnectedOverlayOpen]="isOpen">
-    <div class="w-full">
-      <h3 style="background-color: orange;">
-        Hello
-        Hello
-      </h3>
-     </div>
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="isOpen"
+    >
+      <div class="w-full">
+        <h3 style="background-color: orange;">Hello Hello</h3>
+      </div>
     </ng-template>
   </ng-container>
 </div>
-
-
