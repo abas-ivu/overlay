@@ -4,24 +4,24 @@ import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent{
+export class AppComponent {
   isOpen = false;
   // Short Texts
-  items_short = Array.from({length: 100}).map((_, i) => `Item #- ${i}`);
+  items_short = Array.from({ length: 100 }).map((_, i) => `Item #- ${i}`);
   // Long Sentences
-  items_long = Array.from({length: 100}).map((_, i) => `Item #- this is a long text for test purposes, bear with me.  ${i}`);
+  items_long = Array.from({ length: 100 }).map((_, i) => `Item #- .  ${i}`);
   positions: ConnectionPositionPair[] = [
     { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' },
     { originX: 'end', originY: 'bottom', overlayX: 'end', overlayY: 'top' },
     { originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'bottom' },
-    { originX: 'end', originY: 'top', overlayX: 'end', overlayY: 'bottom' }
+    { originX: 'end', originY: 'top', overlayX: 'end', overlayY: 'bottom' },
   ];
-  @ViewChild('childDiv', {static: false}) childDiv: ElementRef | undefined;
+  @ViewChild('childDiv', { static: false }) childDiv: ElementRef | undefined;
   open: any;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2) {}
 
   onItemSelected(selectedValue: any) {
     console.log('Selected item:', selectedValue.target.value);
@@ -47,19 +47,19 @@ export class AppComponent{
 
   sourceWidth: number = 0;
 
-  openOverlay($event: any){
+  openOverlay($event: any) {
     this.sourceWidth = $event.target.offsetWidth;
     this.isOpen = !this.isOpen;
   }
 
-  normalWidth(){
+  normalWidth() {
     this.renderer.addClass(this.childDiv?.nativeElement, 'w-max');
-
   }
 
-  expandedWidth(){
-    this.renderer.addClass(this.childDiv?.nativeElement, 'w-'+this.getParentWidth()+'px');
+  expandedWidth() {
+    this.renderer.addClass(
+      this.childDiv?.nativeElement,
+      'w-' + this.getParentWidth() + 'px'
+    );
   }
-
-
 }
